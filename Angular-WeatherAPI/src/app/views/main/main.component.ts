@@ -15,7 +15,7 @@ export class MainComponent implements OnInit {
   API_URL = this.urlPt1 + this.urlCityPt2 + this.urlImperial + this.urlKeyPt3;
   FOR_URL = this.forPt1 + this.urlCityPt2 + this.urlImperial + this.urlKeyPt3;
   city: Object[];
-  cityFor: Object[];
+  cityFore: Object[];
   constructor(private wService: WeatherService) { }
 
   ngOnInit() {
@@ -24,8 +24,8 @@ export class MainComponent implements OnInit {
       console.log(this.city);
     });
     this.wService.getURL(this.FOR_URL).subscribe( x => {
-      this.cityFor = x;
-      console.log(this.cityFor);
+      this.cityFore = x.list;
+      console.log(this.cityFore);
     });
   }
 

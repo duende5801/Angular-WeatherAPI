@@ -12,10 +12,10 @@
     </div>
     <div class="container-fluid forecast-content">
         <div class="row">
-            <div class="col" *ngFor="let day of cityFor">
-                <h4>{{day.list.dt}}</h4>
-                <h4>{{day.png}}</h4>
-                <h4>{{day.low}}/{{day.high}}</h4>
+            <div class="col" *ngFor="let day of cityFore">
+                <h4>{{day.dt| date : format : timezone : locale}}</h4>
+                <img src="http://openweathermap.org/img/wn/{{day.weather[0].icon}}@2x.png" alt="">
+                <h4>{{day.main.temp_min}}/{{day.main.temp_max}}</h4>
             </div>
         </div>
     </div>
