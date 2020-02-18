@@ -8,7 +8,7 @@ import { WeatherService } from 'src/app/services/weather.service';
 })
 export class MainComponent implements OnInit {
   urlPt1 = 'http://api.openweathermap.org/data/2.5/weather?q=';
-  forPt1 = "http://api.openweathermap.org/data/2.5/forecast?q=";
+  forPt1 = 'http://api.openweathermap.org/data/2.5/forecast?q=';
   urlCityPt2 = 'stockton,us';
   urlImperial = '&units=imperial';
   urlKeyPt3 = '&APPID=0e1ec07efa4a5a082c2cf3d4f8ff7764';
@@ -24,7 +24,7 @@ export class MainComponent implements OnInit {
       console.log(this.city);
     });
     this.wService.getURL(this.FOR_URL).subscribe( x => {
-      this.cityFore = x.list;
+      this.cityFore = x.list.filter((value, index) => index % 8 === 0);
       console.log(this.cityFore);
     });
   }
