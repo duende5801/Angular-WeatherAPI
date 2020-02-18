@@ -1,9 +1,22 @@
 <div class="container-fluid m-0 p-0 bg-image bg-temp-overlay">
-    <h1>city/state(country)</h1>
-    <h4>date timepicker</h4>
-    <div class="container-fluid core-content">
-        <h1>icon.png</h1>
-        <h4>temp now</h4>
-        <h4>temp high/temp low</h4>
+    <h1 class="p-3">{{city.name}}/{{city.sys.country}}</h1>
+    <h4>{{city.dt | date : format : timezone : locale}}</h4>
+    <div class="container-fluid d-flex justify-content-between core-content p-3">
+        <h1><img src="http://openweathermap.org/img/wn/{{city.weather[0].icon}}@2x.png" alt=""></h1>
+        <h4>{{city.main.temp}} <span><h4>{{city.main.temp_min}}/{{city.main.temp_max}}</h4></span></h4>
+    </div>
+    <div class="container-fluid w-details d-flex justify-content-between p-3">
+    <h4>{{city.wind.speed}}</h4>
+        <h4>{{city.main.humidity}}</h4>
+        <h4>{{city.main.pressure}}</h4>
+    </div>
+    <div class="container-fluid forecast-content">
+        <div class="row">
+            <div class="col" *ngFor="let day of cityFor">
+                <h4>{{day.list.dt}}</h4>
+                <h4>{{day.png}}</h4>
+                <h4>{{day.low}}/{{day.high}}</h4>
+            </div>
+        </div>
     </div>
 </div>
