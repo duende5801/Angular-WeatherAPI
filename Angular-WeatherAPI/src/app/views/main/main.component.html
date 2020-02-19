@@ -1,6 +1,6 @@
 <div class="container-fluid m-0 p-0 bg-image bg-temp-overlay">
-    <h1 class="p-3">{{city.name}}/{{city.sys.country}}</h1>
-    <h4>{{today | date }}</h4>
+    <h1 class="p-3 d-flex justify-content-center">{{city.name}}/{{city.sys.country}}</h1>
+    <h4 class="d-flex justify-content-center">{{today | date }}</h4>
     <div class="container-fluid d-flex justify-content-around align-items-center core-content p-3">
         <h1><img src="http://openweathermap.org/img/wn/{{city.weather[0].icon}}@2x.png" alt=""></h1>
         <h4><i class="fa fa-thermometer-half"></i>{{city.main.temp | number : '1.0-0'}} <span>
@@ -9,8 +9,7 @@
     </div>
     <div class="container-fluid w-details d-flex justify-content-around align-items-center p-3">
         <h4><i class="fa fa-wind"></i>{{city.wind.speed}}</h4>
-        <h4><i class="fa fa-tint"></i>{{city.main.humidity}}</h4>
-        <h4>{{city.main.pressure}}</h4>
+        <h4><i class="fa fa-tint"></i>{{city.main.humidity}}%</h4>
     </div>
     <div class="container-fluid forecast-content">
         <div class="row">

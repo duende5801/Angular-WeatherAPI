@@ -7,9 +7,12 @@ import { WeatherService } from 'src/app/services/weather.service';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  urlPt1 = 'http://api.openweathermap.org/data/2.5/weather?q=';
-  forPt1 = 'http://api.openweathermap.org/data/2.5/forecast?q=';
-  urlCityPt2 = 'stockton,us';
+  posLat: any;
+  posLong: any;
+  urlPt1 = 'http://api.openweathermap.org/data/2.5/weather?';
+  forPt1 = 'http://api.openweathermap.org/data/2.5/forecast?';
+  urlPosPt2 = 'lat=' + this.posLat + '&lon=' + this.posLong;
+  urlCityPt2 = 'q=stockton,us';
   urlImperial = '&units=imperial';
   urlKeyPt3 = '&APPID=0e1ec07efa4a5a082c2cf3d4f8ff7764';
   API_URL = this.urlPt1 + this.urlCityPt2 + this.urlImperial + this.urlKeyPt3;
@@ -20,6 +23,14 @@ export class MainComponent implements OnInit {
   constructor(private wService: WeatherService) { }
 
   ngOnInit() {
+    this.wService.$posLat.subscribe( pos => {
+      this.posLat = pos;
+      console.log(this.posLat);
+    });
+    this.wService.$posLon.subscribe( pos => {
+      this.posLong = pos;
+      console.log(this.posLong);
+    });
     this.wService.getURL(this.API_URL).subscribe( x => {
       this.city = x;
       console.log(this.city);
