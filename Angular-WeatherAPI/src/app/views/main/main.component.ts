@@ -16,6 +16,7 @@ export class MainComponent implements OnInit {
   FOR_URL = this.forPt1 + this.urlCityPt2 + this.urlImperial + this.urlKeyPt3;
   city: Object[];
   cityFore: Object[];
+  today: number = Date.now();
   constructor(private wService: WeatherService) { }
 
   ngOnInit() {
