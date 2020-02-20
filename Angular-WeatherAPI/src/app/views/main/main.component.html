@@ -1,4 +1,4 @@
-<div class="container-fluid m-0 p-0 bg-image bg-temp-overlay">
+<div class="container-fluid m-0 p-0 w{{city.weather[0].icon}}">
     <h1 class="p-3 d-flex justify-content-center">{{city.name}}/{{city.sys.country}}</h1>
     <h4 class="d-flex justify-content-center">{{today | date }}</h4>
     <div class="container-fluid d-flex justify-content-around align-items-center core-content p-3">
@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col"></div>
             <div class="col-12 col-xl-2 col-lg-2 d-flex justify-content-around align-items-center" *ngFor="let day of cityFore; let i=index">
-                <img src="http://openweathermap.org/img/wn/{{day.weather[0].icon}}@2x.png" alt="">
+                <img src="assets/icons/the-weather-is-nice/PNG/64/{{day.weather[0].icon}}.png" alt="">
                 <h4><i class="fa fa-thermometer-half"></i> {{day.main.temp_min| number : '1.0-0'}}/{{day.main.temp_max| number : '1.0-0'}}</h4>
                 <h4>{{day.dt_txt| date : 'MMM d'}}</h4>
             </div>
