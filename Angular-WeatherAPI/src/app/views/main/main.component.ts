@@ -12,7 +12,7 @@ export class MainComponent implements OnInit {
   urlPt1 = 'http://api.openweathermap.org/data/2.5/weather?';
   forPt1 = 'http://api.openweathermap.org/data/2.5/forecast?';
   urlPosPt2 = 'lat=' + this.posLat + '&lon=' + this.posLong;
-  urlCityPt2 = 'q=stockton,us';
+  urlCityPt2 = 'q=allenheads';
   urlImperial = '&units=imperial';
   urlKeyPt3 = '&APPID=0e1ec07efa4a5a082c2cf3d4f8ff7764';
   API_URL = this.urlPt1 + this.urlCityPt2 + this.urlImperial + this.urlKeyPt3;
@@ -40,5 +40,7 @@ export class MainComponent implements OnInit {
       console.log(this.cityFore);
     });
   }
-
+  toggle() {
+    this.show = !this.show;
+  }
 }
