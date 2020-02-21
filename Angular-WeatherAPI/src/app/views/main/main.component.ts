@@ -12,30 +12,35 @@ export class MainComponent implements OnInit {
   urlPt1 = 'http://api.openweathermap.org/data/2.5/weather?';
   forPt1 = 'http://api.openweathermap.org/data/2.5/forecast?';
   urlPosPt2 = 'lat=' + this.posLat + '&lon=' + this.posLong;
-  urlCityPt2 = 'q=allenheads';
+  urlCityPt2 = '';
   urlImperial = '&units=imperial';
   urlKeyPt3 = '&APPID=0e1ec07efa4a5a082c2cf3d4f8ff7764';
-  API_URL = this.urlPt1 + this.urlCityPt2 + this.urlImperial + this.urlKeyPt3;
-  FOR_URL = this.forPt1 + this.urlCityPt2 + this.urlImperial + this.urlKeyPt3;
   city: Object[];
   cityFore: Object[];
   today: number = Date.now();
+  show: boolean;
   constructor(private wService: WeatherService) { }
 
+  onEnter(value: string) {
+
+    this.urlCityPt2 = `q=${value}`;
+    this.getWeatherData();
+  }
   ngOnInit() {
-    this.wService.$posLat.subscribe( pos => {
-      this.posLat = pos;
-      console.log(this.posLat);
-    });
-    this.wService.$posLon.subscribe( pos => {
-      this.posLong = pos;
-      console.log(this.posLong);
-    });
-    this.wService.getURL(this.API_URL).subscribe( x => {
+    this.urlCityPt2 = 'q=lodi,us';
+    this.getWeatherData();
+  }
+
+  getWeatherData() {
+    let API_URL = this.urlPt1 + this.urlCityPt2 + this.urlImperial + this.urlKeyPt3;
+    let FOR_URL = this.forPt1 + this.urlCityPt2 + this.urlImperial + this.urlKeyPt3;
+    console.log(API_URL);
+    console.log(FOR_URL);
+    this.wService.getURL(API_URL).subscribe(x => {
       this.city = x;
       console.log(this.city);
     });
-    this.wService.getURL(this.FOR_URL).subscribe( x => {
+    this.wService.getURL(FOR_URL).subscribe(x => {
       this.cityFore = x.list.filter((value, index) => index % 8 === 0);
       console.log(this.cityFore);
     });
